@@ -12,16 +12,18 @@ import static org.openqa.selenium.By.linkText;
 import static org.openqa.selenium.By.partialLinkText;
 
 public class SelenideTest {
+    private static final String REPOSITORY = "NikolayPostanogov/qa_guru_12_5";
+
     @Test
     public void testGitHubIssue() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com/");
         $(".header-search-input").click();
-        $(".header-search-input").sendKeys("NikolayPostanogov/qa_guru_12_5");
+        $(".header-search-input").sendKeys(REPOSITORY);
         $(".header-search-input").submit();
 
-        $(linkText("NikolayPostanogov/qa_guru_12_5")).click();
+        $(linkText(REPOSITORY)).click();
         $(partialLinkText("Issues")).click();
         $(withText("#1")).should(Condition.visible);
     }
