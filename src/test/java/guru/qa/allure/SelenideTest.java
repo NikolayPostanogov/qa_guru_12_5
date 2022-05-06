@@ -20,7 +20,7 @@ public class SelenideTest {
 
         open("https://github.com/");
         $(".header-search-input").click();
-        $(".header-search-input").sendKeys(REPOSITORY);
+        $(".header-search-input").setValue(REPOSITORY);
         $(".header-search-input").submit();
 
         $(linkText(REPOSITORY)).click();
